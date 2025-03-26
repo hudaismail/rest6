@@ -1,0 +1,120 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+# Create your models here.
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'categories'
+
+
+class Customer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='customer',related_query_name='customer', null=True,blank=True)
+    name = models.CharField(max_length=200, null=True)
+    email = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=200, null=True, blank=True)
+    address = models.CharField(max_length=400, null=True, blank=True)
+
+    def __str__(self):
+        return self.name if self.name else ''
+
+
+
+class Products(models.Model):
+    name = models.CharField(max_length=150, null=True)
+    img = models.ImageField(upload_to='pics')
+    desc = models.TextField(max_length=250, null=True,blank=False)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    offer = models.BooleanField(default=False, null=True,blank=False)
+    sale_price = models.DecimalField(default=0, decimal_places=2,max_digits=8)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
+    digital = models.BooleanField(default=False, null=True, blank=False)
+
+
+    def __str__(self):
+        return f'{self.name} - {self.price} - {self.sale_price}'
+
+
+    @property
+    def imgURL(self):
+        try:
+            url = self.img
+        except:
+            url = ''
+        return url
+
+
+class Order(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    #user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    date_ordered = models.DateTimeField(auto_now=True)
+    complete = models.BooleanField(default=False, null=True, blank=False)
+    transaction_id = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return str(f'{self.date_ordered} + {self.customer.name}')
+
+    @property
+    def shipping(self):
+        shipping = False
+        orderitems = self.orderitems_set.all()
+        for i in orderitems:
+            if i.product.digital == False:
+               shipping = True
+        return shipping
+
+
+    @property
+    def get_cart_total(self):
+        orderitems = self.orderitems_set.all()
+        total = sum([item.get_total for item in orderitems])
+        return total
+
+    @property
+    def get_cart_items(self):
+        orderitems = self.orderitems_set.all()
+        total = sum([item.quantity for item in orderitems])
+        return total
+
+
+
+class OrderItems(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.SET_NULL, blank=True, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True, blank=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(f'{self.order.customer.name} + {self.date_added} + {self.product} + {self.quantity}')
+
+    @property
+    def get_total(self):
+        if self.product.offer == True:
+            total = self.product.sale_price * self.quantity
+        else:
+            total = self.product.price * self.quantity
+        return total
+
+    
+
+
+
+
+
+class ShippingAddress(models.Model):
+    customer = models.ForeignKey(Customer,on_delete=models.SET_NULL,blank=True,null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL,null=True)
+    address = models.CharField(max_length=200,null=True,blank=True)
+    city = models.CharField(max_length=200,null=True,blank=True)
+    phone = models.CharField(max_length=200,null=True,blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(f'{self.address}  -  {self.order}')
+

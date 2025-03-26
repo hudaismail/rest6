@@ -1,0 +1,94 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Cart{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block nav1 %}
+{% endblock %}
+
+
+{% block main %}
+<div style="overflow-x:auto;margin:20px;">
+	<div style="width:200px;padding:5px;border:2px solid #999;font-size:16px;margin:2%; background:white;">
+		<img src="{% static 'image/left.png' %}"><a style="text-decoration:none; color:#111;" href="{% url 'index' %}">
+		Continue Shopping
+		</a></div>
+
+  <table>
+    <tr>
+      <th><h1>Items : <strong>{{order.get_cart_items}}</strong></h1></th>
+      <th><h1>Total :<strong>{{order.get_cart_total|floatformat:2}}</strong></h1></th>
+      <th><a href="{% url 'checkout' %}">checkout</a></th>
+	</tr>
+	  <br><br>
+	  <tr>
+		  <td><h2><strong>image</strong></h2></td>
+		  <td><h2><strong>name</strong></h2></td>
+		  <td><h2><strong>price</strong></h2></td>
+		  <td><h2><strong>quantity</strong></h2></td>
+
+		  <td><h2><strong>Date</strong></h2></td>
+		  <td><h2><strong>Total</strong></h2></td>
+		  <td><h2><strong>Add</strong></h2></td>
+		  <td><h2><strong>Remove</strong></h2></td>
+	  </tr>
+    <tr>
+		{% for item in items %}
+		<td><img src="{{item.product.img.url}}" height="100px" width="100px"></td>
+
+      <td>{{item.product.name}}</td>
+		{% if item.product.offer %}
+	  <td>LE  {{item.product.sale_price}} </td>
+		{% else %}
+	  <td>LE  {{item.product.price}}</td>
+		{% endif %}
+	  <td>x  {{item.quantity}}</td>
+
+	  <td>{{item.date_added}}</td>
+	  <td>{{item.get_total}}</td>
+		<td><img src="{% static 'image/arrow up.png' %}" data-product="{{item.product.id}}" data-action="add"    class="chg-quantity update-cart"></td>
+		<td><img src="{% static 'image/down.png' %}"     data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart"></td>
+
+    </tr>
+	  {% endfor %}
+     </table>
+</div>
+<script>
+var updateButtons = document.getElementsByClassName('update-cart')
+
+	for(var i=0; i<updateButtons.length; i++){
+	   updateButtons[i].addEventListener('click', function(){
+		   var productId = this.dataset.product
+		   var action = this.dataset.action
+		   console.log('productId:',productId, 'action:', action )
+
+		   console.log('USER:', user)
+
+			if(user ==='AnonymousUser'){
+				addCookieItem(productId, action)
+			}else{
+				updateUserOrder(productId, action)
+
+			}
+
+	   })
+	}
+
+
+
+</script>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+
+
+
+

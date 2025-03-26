@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block title %}About Us{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block nav %}
+
+{% endblock %}
+
+{% block nav1 %}
+{% endblock %}
+
+
+{% block main %}
+
+<div class="logo"><img src="{% static 'image/geddologo6-16.png' %}"></div>
+
+
+    <div class="form">
+    <form action="login" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="username"><br><br>
+        <input type="password" name="password" placeholder="password"><br><br>
+        <input type="Submit" class="submit">
+    </form><br><br>
+
+    <div>
+    {% for message in messages %}
+        <h3>{{message}}</h3>
+    {% endfor %}
+    </div><br><br>
+
+    <div>
+        <a style="color:#111;font-size:16px;"    href="{% url 'register' %}">Not a Member....Register</a><br><br>
+        <a style="color:blue;font-size:16px;"  href="{% url 'reset_password' %}">Forgot Password</a>
+    </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+
+

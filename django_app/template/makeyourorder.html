@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block title %}About Us{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block nav %}
+
+{% endblock %}
+
+{% block nav1 %}
+{% endblock %}
+
+
+{% block main %}
+
+<div class="logo"><img src="{% static 'image/geddologo6-16.png' %}"></div>
+
+<center><h1>Make Your Order</h1></center>
+<center><h3>Use the following form to contact us and request your order</h3></center>
+
+<div class="container">
+    <form action="" method="POST" class="contact-form">
+        {% csrf_token %}
+
+
+        <div class="form-control">
+            <div class="tag">Name</div>
+            <input type="text" name="name">
+        </div><br>
+
+        <div class="form-control">
+            <div class="tag"> Email </div>
+            <input type="text" name="email">
+        </div><br>
+
+        <div class="form-control">
+            <div class="tag">Phone</div>
+            <input type="text" name="phone">
+        </div><br>
+
+        <div class="form-control">
+            <div class="tag"> message </div>
+            <textarea name="message" cols="70" rows="10"></textarea>
+        </div><br>
+
+        <div class="form-control">
+            <div class="tag">Date</div>
+            <input type="text" name="date">
+        </div><br>
+
+        <div class="form-control">
+            <input type="Submit" class="submit-btn" value="Send">
+        </div><br>
+    </form>
+    </div>
+
+
+    {% for message in messages %}
+    <div>
+        <h3>{{message}}</h3>
+    {% endfor %}
+    </div>
+{% endblock %}

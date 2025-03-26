@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+{% if searched %}
+
+
+<h1>You search for  {{searched}}</h1>
+
+
+
+{% for product in product %}
+<div class="img"><img src="{{product.img.url}}" style="width:250px;height:250px"></div>
+<h3>{{product.name}}</h3>
+<h3>{{product.desc}}</h3>
+
+{% if product.offer %}
+<h3><strike style="color:red">{{product.price}}</strike></h3>
+<h3 style="background:red;padding:5px;display:inline">{{product.sale_price}} LE </h3><br>
+{% else %}
+{{product.price}}
+{% endif %}
+{% endfor %}
+
+{% else %}
+
+<h1>Hey! You forgot to search for...........</h1>
+
+{% endif %}
+
+
+
+</body>
+</html>

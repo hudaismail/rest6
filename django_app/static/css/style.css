@@ -1,0 +1,517 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Mulish:wght@300;400;500&display=swap');
+:root{
+	--primary-color:#202020;
+	--secondary-color:#f4f7fc;
+	--grey:#a6a6a6;
+}
+html{
+	font-size:62.5%;
+	scroll-behavior:smooth;
+}
+*,
+::before,
+::after{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+body{
+	height:auto;
+	width:100%;
+	font-family: 'mulish', sans-serif;
+	color:#111;
+	position:relative;
+	background-image:url('/static/image/.png');
+	background-position:center;
+	background-size:cover;
+	background:;
+}
+
+.scroll-top{
+	position:fixed;
+	bottom:20px;
+	right:40px;
+	z-index:90;
+	background:rgb(150,15,10);
+	color:white;
+	cursor:pointer;
+	padding:8px 16px;
+	font-size:20px;
+	font-weight:800;
+}
+
+
+
+.container{
+    background:;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    width:95%;
+    height:100px;
+    margin:auto;
+    align-items:center;
+    position:relative;
+}
+.menu a{
+    display:inline-block;
+    text-decoration:none;
+    color:#111;
+    font-size:16px;
+    padding:10px 16px;
+    line-height:60px;
+
+}
+.logo img{
+margin-top:50px;
+
+}
+.icon{
+	display:none;
+}
+@media only screen and (max-width:768px){
+	.icon{
+		display:block;
+
+	}
+	.menu{
+		position:absolute;
+		background:rgba(250,250,250,.4);
+		width:100%;
+		z-index:5;
+		display:none;
+		right:0px;
+		top:100%;
+		border-radius:3px;
+		padding:20px;
+		margin:5px;
+
+
+	}
+	.menu a{
+		padding:15px 0;
+		font-size:18px;
+		display:block;
+		color:#111;
+	}
+	.show{
+		display:block;
+	}
+}
+
+/* ----------nav1---------- */
+.nav1{
+    width:100%;
+    height:auto;
+    background:;
+    color:white;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    padding:5px;
+    background:;
+    margin:25px;
+}
+.nav1 .cart{
+    margin:10px;
+
+}
+.nav1 .cart a{
+    color:#111;
+    text-decoration:none;
+    font-size:30px;
+    line-height:25px;
+}
+
+/* ----------search---------- */
+.search{
+
+}
+.form-search{
+    margin: 0 auto;
+    text-align: center;
+
+    font: bold 13px sans-serif;
+     max-width: 70%;
+    position: relative;
+}
+
+.form-search input{
+    width: 60%;
+    box-sizing: border-box;
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+    background-color:  #ffffff;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 14px 15px 14px 40px;
+    border: 1px solid green;
+    border-right: 0;
+    color:#4E565C;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.form-search button{
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+    background-color:rgb(180,15,10);
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    color: #ffffff;
+    padding: 15px 22px;
+    margin-left: -4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.form-search i{
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 16px;
+    color: #111;
+}
+
+/*----------------*/
+main{
+
+}
+.main{
+    width:95%;
+    color:#111;
+    background:rgba(253,250,250,.5);
+    background:;
+    margin:auto;
+
+}
+
+.container1{
+    position:relative;
+    top:5px;
+    background:;
+   height:auto;
+   margin:auto;
+
+
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 18%;
+  padding:5px;
+  border:1px solid #999;
+  margin:1%;
+}
+
+.column img {
+  margin: auto;
+
+  vertical-align: middle;
+  width: 100%;
+}
+
+.quantity{
+    display:flex;
+    background:beige;
+    width:100%;
+    height:50px;
+    margin:auto;
+}
+.quantity button{
+    color:white;
+    background:#444;
+    width:50%;
+    padding:2px;
+    margin:2%;
+
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+
+  }
+}
+
+
+
+
+
+
+
+
+/*----------------*/
+footer{
+	background:rgba(220,5,5,.8);
+	margin-top:100px;
+	padding:10px 0;
+    position:relative;
+	grid-template-columns:repeat(2,1fr);
+	grid-gap:px;
+	width:100%;
+	bottom:0px;
+}
+footer h3{
+	color:white;
+}
+.foot{
+	display:grid;
+	grid-template-columns:repeat(3,1fr);
+	margin:0 auto;
+	grid-gap:16px;
+	justify-items:center;
+}
+.footleft{
+	padding:7px;
+	font-size:14px;
+}
+
+.footleft a{
+	text-decoration:none;
+	color:white;
+	font-size:16px;
+}
+.footcenter{
+	color:white;
+	padding:15px;
+	font-size:16px;
+}
+.footcenter a{
+	color:white;
+}
+.footright{
+	text-align:center;
+	color:white;
+}
+.social-links .fa{
+	height:40px;
+	width:40px;
+	font-size:20px;
+	line-height:40px;
+	margin:20px 5px;
+	color:white;
+	transition:0.5s;
+}
+.social-links .fa:hover{
+	color:cyan;
+	transform:translateY(-7px);
+}
+.social-links p{
+	font-size:14px;
+	margin-top:5px;
+	padding:5px;
+	color:white;
+}
+
+@media only screen and (max-width:768px){
+	.foot{
+		grid-template-columns:1fr;
+		justify-items:start;
+	}
+}
+
+/*-----------------slider-----------------------*/
+
+.slider {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+
+    height:345px;
+
+
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    background:beige;
+
+
+}
+
+.slide img {
+    width: 100%;
+    height:30%;
+    margin:auto;
+    display: block;
+
+
+}
+
+.navigation {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.navigation button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.navigation button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+@media only screen and (max-width:768px){
+.navigation button {
+    padding: 5px;
+}
+.navigation{
+    top: 11%;
+}
+}
+
+
+/*---dropdown category---*/
+.dropdown {
+  margin-top:15px;
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: rgb(180,15,10);
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown:hover .dropbtn{
+  background-color: #555;
+  color: white;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+/*---------table-------------*/
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 90%;
+  border: 1px solid #ddd;
+}
+table th h1{
+color:#111;
+background:gold;
+padding-left:20%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+th a{
+    text-decoration:none;
+    font-size:18px;
+
+}
+tr:nth-child(even){background-color: #f2f2f2}
+
+/*-----------------paypal----------*/
+
+        /* Media query for mobile viewport */
+        @media screen and (max-width: 400px) {
+            #paypal-button-container {
+                width: 100%;
+            }
+        }
+
+        /* Media query for desktop viewport */
+        @media screen and (min-width: 400px) {
+            #paypal-button-container {
+                width: 250px;
+            }
+        }
+
+.form{
+    width:60%;
+    height:60%;
+    padding:10px;
+    border-radius:20px;
+    margin:auto;
+    background:rgba(208,205,205,.8)
+
+
+}
+.form input{
+    width:100%;
+    height:18px;
+    border-radius:15px;
+    padding:15px;
+
+}
+.form .submit{
+    background:#111;
+    width:30%;
+    color:white;
+}

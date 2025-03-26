@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% block title %}Category{% endblock %}
+
+{% block main %}
+    <h1>{{Category}}</h1>
+
+
+
+	<div class="container1">
+	<div class="row">
+        {% for product in products %}
+	<div class="column">
+		<div class="frame">
+			<div class="img"><img src="{{product.img.url}}" alt=""></div>
+            <div class="cont"><h2>{{product.name}}</h2>
+			<h2>{{product.desc}}</h2>
+			<h2>{{product.price}}</h2>
+
+			ID:{{product.id}}
+			{% if product.offer %}
+			<h2><strike>LE  {{product.price}}</strike>
+				LE  {{product.sale_price}}  Now</h2>
+
+			<h2 style="background:red;color:white">* sale !!!! *</h2>
+
+			{% endif %}
+
+			</div>
+
+
+		<div class="quantity">
+			<button style="width:150px;" data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart" id="add-cart">add cart</button>
+			<button style="background:green;color:white;" data-product="{{product.id}}" data-action="remove" class="chg-quantity update-cart">remove</button>
+		</div>
+		</div>
+	</div>
+
+	{% endfor %}
+
+	</div>
+</div>
+
+{% endblock %}
