@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.models import User,auth
-from django.contrib import messages
+#from django.contrib.auth.models import User,auth
+#from django.contrib import messages
 from .models import *
 from django.http import JsonResponse
 from django.http import HttpResponse
@@ -9,6 +9,7 @@ import json
 from .utils import cookieCart, cartData, guestOrder
 import datetime
 from django.core.mail import send_mail
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 
@@ -27,6 +28,25 @@ def cart(request):
     items = data['items']
     return render(request, 'cart.html', {'items': items, 'order': order, 'cartItems': cartItems})
 
+def empty_cart(request):
+    data = cartData(request)
+    order = data['order']
+    items = data['items']
+    cartItems = data['cartItems']
+    cookieData = cookieCart(request)
+    items = cookieData['items']
+
+    if request.user.is_authenticated:
+        OrderItems.objects.filter(order_id=order).delete()
+        messages.success(request, "empty cart")
+        return redirect('index')
+
+
+    else:
+        response = redirect('index')
+        response.delete_cookie('cart')
+        messages.success(request, "cart emptied")
+        return response
 
 def checkout(request):
     data = cartData(request)
@@ -60,22 +80,16 @@ def updateItem(request):
 
     return JsonResponse('Item Was Added successfully', safe=False)
 
-
 def processOrder(request):
-
     transaction_id = datetime.datetime.now().timestamp()
-    print('Data:', request.body)
-
     data = json.loads(request.body)
 
     if request.user.is_authenticated:
-
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
     else:
         customer, order = guestOrder(request, data)
-
     total = float(data['form']['total'])
     order.transaction_id = transaction_id
 
@@ -106,24 +120,21 @@ def search(request):
         return render(request, 'search.html', {})
 
 
-def category(request,foo):
+def category(request, foo):
     # replace hyphens with spaces
     foo = foo.replace('-', ' ')
     try:
         category = Category.objects.get(name=foo)
-        products = Products.objects.filter(category=category)
-        return render(request, 'category.html', {'products': products, 'category': category})
+        ducts = Products.objects.filter(category=category)
+        data = cartData(request)
+        cartItems = data['cartItems']
+        order = data['order']
+        items = data['items']
+
+        return render(request, 'category.html', {'ducts': ducts, 'category': category, 'items': items, 'order': order, 'cartItems': cartItems})
     except:
         messages.success(request, ("That category dosn't exist"))
         return redirect('index')
-"""
-    data = cartData(request)
-    cartItems = data['cartItems']
-    order = data['order']
-    items = data['items']
-    return render(request, 'checkout.html', {'items': items, 'order': order, 'cartItems': cartItems})
-
-"""
 
 
 
@@ -133,7 +144,6 @@ def home(request):
 
     ducts = Products.objects.all()
     return render(request, 'home.html', {'ducts': ducts, 'cartItems': cartItems})
-
 
 def about(request):
     return render(request, 'about.html')
@@ -164,3 +174,70 @@ def contact(request):
 
 
 
+#&disable-funding=credit
+
+"""
+    card_number = CardNumberField()
+    expire = CardExpiryField()
+    security_code = SecurityCodeField()
+
+    /*
+  csrftoken = form.getElementByTagName("input")[0].value
+  console.log('new token:' form.getElementByTagName("input")[0].value)
+*/
+/*
+        const element = document.getElementById("paypal-button-container");
+        element.innerHTML = "";
+
+*/
+<script>
+ //setup transaction
+    paypal.Buttons({
+
+        style:{
+            color:'blue',
+            shape:'rect',
+        },
+        createOrder: function(data, actions) {
+            return actions.order.create({
+              purchase_units:[{
+                amount:{
+                    value:'0.01'
+                }
+              }]
+            });
+            },
+        //finalize the transaction
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details){
+                alert('Transaction completed by' +details.payer.name.given_name + '!');
+            });
+        }
+    }).render('#paypal-button-container');
+</script>
+
+
+
+
+"""
+
+
+
+#&disable-funding=credit
+
+"""
+    card_number = CardNumberField()
+    expire = CardExpiryField()
+    security_code = SecurityCodeField()
+
+    /*
+  csrftoken = form.getElementByTagName("input")[0].value
+  console.log('new token:' form.getElementByTagName("input")[0].value)
+*/
+/*
+        const element = document.getElementById("paypal-button-container");
+        element.innerHTML = "";
+
+*/
+
+"""

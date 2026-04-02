@@ -1,14 +1,3 @@
-from django.shortcuts import render,redirect
-from django.contrib.auth.models import User,auth
-
-
-from django.http import JsonResponse
-
-from django.contrib.auth.decorators import login_required
-
-from django.shortcuts import get_object_or_404
-
-
 import json
 from .models import *
 
@@ -44,19 +33,15 @@ def cookieCart(request):
             items.append(item)
 
             if product.digital == False:
-                order['shipping']=True
+                order['shipping'] = True
 
         except:
             pass
 
     return {'cartItems': cartItems, 'order': order, 'items': items}
 
-
-
 def cartData(request):
-
     if request.user.is_authenticated:
-
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitems_set.all()
@@ -76,12 +61,14 @@ def guestOrder(request, data):
     name = data['form']['name']
     email = data['form']['email']
     phone = data['form']['phone']
+    address = data['form']['address']
     cookieData = cookieCart(request)
     items = cookieData['items']
     customer, created = Customer.objects.get_or_create(
         name=name,
         email=email,
         phone=phone,
+        address=address,
     )
 
     customer.name = name
@@ -90,16 +77,18 @@ def guestOrder(request, data):
     order = Order.objects.create(
         customer=customer,
         complete=False,
-    )
+        )
 
     for item in items:
         product = Products.objects.get(id=item['product']['id'])
-        orderItem = OrderItems.objects.create(
+        order = OrderItems.objects.create(
             product=product,
             order=order,
-            quantity=item['quantity']
-        )
+            quantity=item['quantity'],
+            )
 
     return customer, order
+
+
 
 

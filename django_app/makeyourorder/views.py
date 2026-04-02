@@ -27,8 +27,9 @@ def makeyourorder(request):
 
     return render(request,'makeyourorder.html', {})
 
-#eldahfxb_rest5	user:hudaismail pw:hudaismail1234 mysql namecheap user:eldahfxb_hudaismail Database: eldahfxb_rest5
 """
+#eldahfxb_rest5	user:hudaismail pw:hudaismail1234 mysql namecheap user:eldahfxb_hudaismail Database: eldahfxb_rest5
+
 import imp
 import os
 import sys

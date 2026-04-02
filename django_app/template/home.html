@@ -1,3 +1,38 @@
 {% extends 'index.html' %}
+{% block title %}Ma{% endblock %}
+
+
+{% block main %}
+<div class="conthome">
+    <div class="cont1">
+        <center><h1>أكل شرقي ومشويات</h1></center>
+        <div><a href="{% url 'category' 'oriental cuisin' %}"><img src="/static/image/img4.jpg"></a></div>
+    </div>
+
+    <div class="cont2">
+        <center><h1>مأكولات بحرية</h1></center>
+        <div><a href="{% url 'category' 'sea food' %}"><img src="/static/image/fish2.jpg"></a></div>
+    </div>
+
+    <div class="cont3">
+        <center><h1>حلويات شرقي و غربي</h1></center>
+        <div><a href="{% url 'category' 'dessert' %}"><img src="/static/image/cake1.jpg"></a></div>
+    </div>
+
+    <div class="cont4">
+        <center><h1>وجبات سريعة</h1></center>
+        <div><a href="{% url 'category' 'fast food meals' %}"><img src="/static/image/pizza.jpg"></a></div>
+    </div>
+    <div class="cont5">
+        <center><h1>مخبوزات و معجنات</h1></center>
+        <div><a href="{% url 'category' 'bakery' %}"><img src="/static/image/bake1.jpg"></a></div>
+    </div>
+
+    <div class="cont6">
+        <center><h1>تشكيلة منتجات</h1></center>
+        <div><a href="{% url 'category' 'mix' %}"><img src="/static/image/tash3.png"></a></div>
+    </div>
+</div>
+{% endblock %}
 
 

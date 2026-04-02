@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from creditcards.models import CardNumberField,SecurityCodeField,CardExpiryField
 # Create your models here.
 
 
@@ -58,7 +58,7 @@ class Order(models.Model):
     transaction_id = models.CharField(max_length=200, null=True)
 
     def __str__(self):
-        return str(f'{self.date_ordered} + {self.customer.name}')
+        return str(f'{self.id} + {self.date_ordered} + {self.customer}')
 
     @property
     def shipping(self):
@@ -91,7 +91,7 @@ class OrderItems(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(f'{self.order.customer.name} + {self.date_added} + {self.product} + {self.quantity}')
+        return str(f'{self.date_added} + {self.product} + {self.quantity} + {self.order}')
 
     @property
     def get_total(self):
@@ -116,5 +116,6 @@ class ShippingAddress(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(f'{self.address}  -  {self.order}')
+        return str(f'{self.date_added} + {self.address} + {self.order} + {self.city}')
+
 

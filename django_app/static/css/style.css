@@ -18,13 +18,14 @@ html{
 body{
 	height:auto;
 	width:100%;
-	font-family: 'mulish', sans-serif;
+
 	color:#111;
 	position:relative;
 	background-image:url('/static/image/.png');
 	background-position:center;
 	background-size:cover;
 	background:;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .scroll-top{
@@ -32,7 +33,7 @@ body{
 	bottom:20px;
 	right:40px;
 	z-index:90;
-	background:rgb(150,15,10);
+	background:#32cd32;
 	color:white;
 	cursor:pointer;
 	padding:8px 16px;
@@ -55,6 +56,12 @@ nav{
     align-items:center;
     position:relative;
 }
+.menu{
+    display:flex;
+}
+.reg{
+
+}
 .menu a{
     display:inline-block;
     text-decoration:none;
@@ -65,7 +72,7 @@ nav{
 
 }
 .logo img{
-margin-top:50px;
+margin-top:40px;
 
 }
 .icon{
@@ -156,7 +163,7 @@ margin-top:50px;
 .form-search button{
     border-bottom-right-radius: 2px;
     border-top-right-radius: 2px;
-    background-color:rgb(180,15,10);
+    background-color:#32cd32;
     box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
     color: #ffffff;
     padding: 15px 22px;
@@ -224,18 +231,21 @@ main{
 
 .quantity{
     display:flex;
-    background:beige;
+    background:;
     width:100%;
     height:50px;
     margin:auto;
 }
 .quantity button{
-    color:white;
-    background:#444;
+    color:#32cd32;
+    background:;
     width:50%;
     padding:2px;
     margin:2%;
-
+}
+.quantity button:hover{
+    background:gold;
+    color:#111;
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
@@ -256,19 +266,17 @@ main{
     max-width: 100%;
 
   }
+  .logo img{
+    width:130px;
+    height:100px;
+    margin-top:20px;
+  }
 }
-
-
-
-
-
-
-
 
 /*----------------*/
 footer{
-	background:rgba(220,5,5,.8);
-	margin-top:100px;
+	background:rgba(232,244,140,.8);
+    margin-top:100px;
 	padding:10px 0;
     position:relative;
 	grid-template-columns:repeat(2,1fr);
@@ -277,7 +285,7 @@ footer{
 	bottom:0px;
 }
 footer h3{
-	color:white;
+	color:#333;
 }
 .foot{
 	display:grid;
@@ -293,20 +301,20 @@ footer h3{
 
 .footleft a{
 	text-decoration:none;
-	color:white;
+	color:#333;
 	font-size:16px;
 }
 .footcenter{
-	color:white;
+	color:#333;
 	padding:15px;
 	font-size:16px;
 }
 .footcenter a{
-	color:white;
+	color:#222;
 }
 .footright{
 	text-align:center;
-	color:white;
+	color:#333;
 }
 .social-links .fa{
 	height:40px;
@@ -314,18 +322,18 @@ footer h3{
 	font-size:20px;
 	line-height:40px;
 	margin:20px 5px;
-	color:white;
+	color:#333;
 	transition:0.5s;
 }
 .social-links .fa:hover{
-	color:cyan;
+	color:#32cd32;
 	transform:translateY(-7px);
 }
 .social-links p{
 	font-size:14px;
 	margin-top:5px;
 	padding:5px;
-	color:white;
+	color:#555;
 }
 
 @media only screen and (max-width:768px){
@@ -412,7 +420,8 @@ footer h3{
   font-size: 17px;
   border: none;
   outline: none;
-  color: rgb(180,15,10);
+  color:#111;
+  font-weight:500;
   padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;
@@ -433,7 +442,7 @@ footer h3{
   z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content a{
   float: none;
   color: black;
   padding: 12px 16px;
@@ -462,7 +471,7 @@ table {
 }
 table th h1{
 color:#111;
-background:gold;
+background:#adff2f;
 padding-left:20%;
 }
 
@@ -494,24 +503,108 @@ tr:nth-child(even){background-color: #f2f2f2}
         }
 
 .form{
-    width:60%;
-    height:60%;
+    width:50%;
+    height:40%;
     padding:10px;
-    border-radius:20px;
+    border-radius:;
     margin:auto;
-    background:rgba(208,205,205,.8)
+    border:1px solid #111;
+
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 
 
 }
 .form input{
     width:100%;
     height:18px;
-    border-radius:15px;
+    border-radius:;
     padding:15px;
 
 }
 .form .submit{
-    background:#111;
-    width:30%;
+    background:#04AA6D;
+    width:100%;
+    line-height:auto;
+    height:50px;
+    color:white;
+    font-size:20px;
+    font-weight:700;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+
+
+}
+
+.hidden{
+    visibility:hidden;
+}
+.box-element .hidden{
+    background:red;
+    width:500px;
+    height:300px;
+    visibility:hidden;
+}
+
+button .fa .fa-shopping-cart{
+    font-size:20px;
+}
+
+.makeyourorder{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background:#04AA6D;
+    font-weight:700;
     color:white;
 }
+.makeyourorder:hover{
+
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+background:;
+}
+
+/*----------------home---------------------------*/
+.conthome{
+    display:;
+    display:grid;
+	grid-template-columns:repeat(3,1fr);
+	margin:0 auto;
+	grid-gap:40px;
+	justify-items:center;
+
+	width:100%;
+	height:auto;
+
+
+
+}
+.conthome img{
+    width:350px;
+    height:350px;
+}
+.conthome h1{
+    color:white;
+    padding:8px;
+    font-size:24px;
+    font-weight:700;
+    background:#333;
+
+}
+
+
+
+
+
+/*------login button------------
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+*/
+

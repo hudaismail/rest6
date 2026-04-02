@@ -1,4 +1,4 @@
-console.log('hi');
+console.log('hiiiiiiiiii');
 //alert('hii');
 
 const icon = document.querySelector('.icon')
@@ -21,12 +21,6 @@ window.addEventListener('scroll',function(){
 scrollBtn.addEventListener('click',()=>{
 	document.documentElement.scrollTop=0;
 })
-
-
-
-
-
-
 //second
 var updateButtons = document.getElementsByClassName('update-cart')
 
@@ -49,7 +43,6 @@ for(var i=0; i<updateButtons.length; i++){
 }
 
 //last third
-
 function addCookieItem(productId, action){
     console.log('Not Logged in.....')
 
@@ -74,9 +67,6 @@ function addCookieItem(productId, action){
     document.cookie = 'cart=' + JSON.stringify(cart)+ ";domain=;path=/"
     location.reload()
 }
-
-
-
 
 function updateUserOrder(productId, action){
       console.log('User is logged in, sending data.')
