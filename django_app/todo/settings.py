@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'payment.apps.PaymentConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -146,3 +148,9 @@ EMAIL_HOST_PASSWORD = 'tkrt ctjc ldey vnob'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+# Paymob credentials
+PAYMOB_API_KEY = "YOUR_API_KEY"
+PAYMOB_INTEGRATION_ID = "YOUR_INTEGRATION_ID"
+PAYMOB_IFRAME_ID = "YOUR_IFRAME_ID"
+PAYMOB_BASE_URL = "https://accept.paymob.com/api"

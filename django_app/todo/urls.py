@@ -25,5 +25,7 @@ urlpatterns = [
     path('', include('todo_list.urls')),
     path('account/', include('account.urls')),
     path('makeyourorder/', include('makeyourorder.urls')),
+    path('payment/', include('payment.urls')),
+
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
